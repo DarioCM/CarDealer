@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import org.springframework.lang.NonNull;
+
 //compra
 @Entity
 @Table(name = "purchases")
@@ -19,17 +23,22 @@ public class Purchase implements Serializable {
     private Car car;
 
     @Temporal(TemporalType.DATE)
+    @Past
     private Date date;
+
+    @NotNull
     private Double finalPrice;
 
-    public Purchase() {
-    }
 
     public Purchase(Long id, Car car, Date date, Double finalPrice) {
         this.id = id;
         this.car = car;
         this.date = date;
         this.finalPrice = finalPrice;
+    }
+
+    public Purchase() {
+
     }
 
     public Long getId() {
