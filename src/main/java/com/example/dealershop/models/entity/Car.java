@@ -2,6 +2,7 @@ package com.example.dealershop.models.entity;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -15,6 +16,9 @@ public class Car implements Serializable {
    private String brand;
    private Integer year;
    private Double price;
+
+   @OneToMany(mappedBy = "car")
+   private List<Purchase> purchases;
 
    public Car(Long id, String model, String brand, Integer year, Double price) {
       this.id = id;
