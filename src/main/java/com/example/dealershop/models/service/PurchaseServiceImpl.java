@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PurchaseServiceImpl implements IPurchaseService {
 
@@ -16,6 +18,14 @@ public class PurchaseServiceImpl implements IPurchaseService {
     @Transactional
     public Purchase addPurchase(Purchase purchase) {
         return purchaseDao.save(purchase);
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<Object[]> getSalesReport() {
+        return purchaseDao.getSalesReport();
     }
 
 
